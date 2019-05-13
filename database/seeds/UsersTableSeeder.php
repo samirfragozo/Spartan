@@ -1,6 +1,8 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,6 +13,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Role::create(['name' => 'admin']);
+
+        factory(User::class)->create([
+            'email' => 'admin@admin.com',
+        ])->assignRole('admin');
     }
 }
