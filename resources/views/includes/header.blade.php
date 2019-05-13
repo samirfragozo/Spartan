@@ -63,13 +63,13 @@
                                             <div class="m-card-user m-card-user--skin-dark">
                                                 <div class="m-card-user__pic">
                                                     <span class="m-type m-type--lg m--bg-danger">
-                                                        <span class="m--font-light">{{ str_limit(Auth::user()->name, 1, '') }}</span>
+                                                        <span class="m--font-light">{{ substr(Auth::user()->name, 0, 1) }}</span>
                                                     </span>
                                                 </div>
 
                                                 <div class="m-card-user__details">
-                                                    <span class="m-card-user__name m--font-weight-500">{{ str_limit(Auth::user()->name, 30, '...') }}</span>
-                                                    <a class="m-card-user__email m--font-weight-300 m-link">{{ str_limit(Auth::user()->email, 50, '...') }}</a>
+                                                    <span class="m-card-user__name m--font-weight-500">{{ Str::limit(Auth::user()->name, 30, '...') }}</span>
+                                                    <a class="m-card-user__email m--font-weight-300 m-link">{{ Str::limit(Auth::user()->email, 50, '...') }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,8 +81,7 @@
 
                                                     <li class="m-nav__item">
                                                         <a href="{{ route('logout') }}"
-                                                           onclick="event.preventDefault();
-                                                                        document.getElementById('logout-form').submit();"
+                                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                                            class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
                                                             {{ __('base.buttons.logout') }}
                                                         </a>
