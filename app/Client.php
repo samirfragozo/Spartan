@@ -198,6 +198,9 @@ class Client extends Base
     public function notifyUpdate()
     {
         $active = $this->active ? 'true' : 'false';
+        $date = date("Y-m-d");
+        $date = strtotime(date("Y-m-d", strtotime($date)) . " +50 years");
+        $date = date("Y-m-d", $date);
 
         Amqp::publish('Demo',
             '{
@@ -206,10 +209,11 @@ class Client extends Base
                 "errorMessage":"",
                 "fingerprintURL":"' . $this->fingerprint . '",
                 "fullname":"' . $this->full_name . '",
-                "endDate":"' . date("Y-m-d") . '",
+                "endDate":"' . $date . '",
                 "idSubsidiary":1,
                 "rfid":"' . $this->rfid . '"
             }',
-            ['queue' => 'Demo']);
+            ['queue' => 'Demo']
+        );
     }
 }
