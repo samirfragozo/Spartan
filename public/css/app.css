@@ -8,6 +8,8 @@
   color: #555;
   background: #fff;
   line-height: 20px;
+  height: 35px;
+  border-radius: .25rem;
 }
 
 .tag-editor li {
@@ -27,9 +29,9 @@
 }
 
 .tag-editor .placeholder {
-  padding: 0 0;
   color: #bbb;
-  margin: 10px 30px;
+  margin: 7px 0;
+  height: 35px;
 }
 
 .tag-editor .tag-editor-spacer {
