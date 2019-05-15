@@ -8,7 +8,7 @@
                             @if(file_exists('img/logo_default.png'))
                                 <img src="{{ asset('img/logo_default.png') }}" alt="Logo"/>
                             @else
-                                <h3>{{ config('app.name') }}</h3>
+                                <h4>{{ config('app.name') }}</h4>
                             @endif
                         </a>
                     </div>
