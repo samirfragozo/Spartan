@@ -1,12 +1,16 @@
 <?php
 
-/* @var $factory \Illuminate\Database\Eloquent\Factory */
+/* @var $factory Factory */
 
 use App\Punch;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 
 $factory->define(Punch::class, function (Faker $faker) {
     return [
-        //
+        'date' => $faker->dateTimeBetween($startDate = '-2 days', $endDate = 'now'),
+        'client_id' => function () {
+            return factory(App\Client::class)->create()->id;
+        },
     ];
 });

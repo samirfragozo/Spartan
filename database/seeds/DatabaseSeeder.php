@@ -16,9 +16,5 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             TestSeeder::class
         ]);
-
-//        if (App::environment() === 'local') {
-//            $this->call(TestSeeder::class);
-//        }
     }
 }

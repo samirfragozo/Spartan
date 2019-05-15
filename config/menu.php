@@ -9,6 +9,10 @@ return [
                 'crud' => 'clients',
                 'icon' => 'fa fa-users',
             ],
+            [
+                'crud' => 'punches',
+                'icon' => 'fa fa-user-clock',
+            ],
         ],
     ],
 

@@ -25,7 +25,7 @@ class BaseController extends Controller
      * @param Model $entity
      * @param bool $user
      */
-    protected function __construct(Model $entity, bool $user = false)
+    protected function __construct(Model $entity, $user = false)
     {
         $this->entity = $entity;
         $this->crud = $this->entity->getTable();

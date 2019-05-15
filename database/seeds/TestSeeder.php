@@ -1,6 +1,7 @@
 <?php
 
 use App\Client;
+use App\Punch;
 use Illuminate\Database\Seeder;
 
 class TestSeeder extends Seeder
@@ -16,6 +17,12 @@ class TestSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             factory(Client::class)->create([
                 'active' => random_int(0, 1),
+            ]);
+        }
+
+        for ($i = 0; $i < 100; $i++) {
+            factory(Punch::class)->create([
+                'client_id' => random_int(1, Client::count()),
             ]);
         }
     }

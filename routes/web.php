@@ -16,5 +16,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // Clients
         Route::resource('clients', 'ClientController', ['except' => ['create', 'destroy', 'edit']]);
         Route::put('clients', 'ClientController@status');
+
+        // Punches
+        Route::resource('punches', 'PunchController', ['only' => ['index']]);
     });
 });

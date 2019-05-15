@@ -147,6 +147,8 @@ return [
         'birth_date' => 'Fecha de nacimiento',
         'cellphone' => 'Celular',
         'civil_status' => 'Estado civil',
+        'client_id' => 'Cliente',
+        'date' => 'Fecha',
         'document' => 'Documento',
         'document_type' => 'Tipo de documento',
         'last_name' => 'Apellidos',

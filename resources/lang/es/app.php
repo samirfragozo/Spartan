@@ -7,6 +7,7 @@ return [
     'titles' => [
         'clients' => 'Clientes',
         'home' => 'Inicio',
+        'punches' => 'Marcaciones',
     ],
 
     'roles' => [

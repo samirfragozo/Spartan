@@ -3,6 +3,7 @@
 namespace App;
 
 use Bschmitt\Amqp\Facades\Amqp;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -215,5 +216,17 @@ class Client extends Base
             }',
             ['queue' => 'Demo']
         );
+    }
+
+    // Relationships
+
+    /**
+     * Punches relationship
+     *
+     * @return HasMany
+     */
+    public function punches()
+    {
+        return $this->hasMany(Punch::class);
     }
 }

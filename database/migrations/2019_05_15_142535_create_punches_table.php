@@ -15,6 +15,9 @@ class CreatePunchesTable extends Migration
     {
         Schema::create('punches', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->dateTime('date');
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients');
             $table->timestamps();
         });
     }
