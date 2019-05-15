@@ -4,14 +4,35 @@ return [
 
     'messages' => [],
 
-    'titles' => [ ],
+    'titles' => [
+        'clients' => 'Clientes',
+        'home' => 'Inicio',
+    ],
 
     'roles' => [
         'admin' => 'Administrador',
     ],
 
-    'sections' => [],
+    'sections' => [
+        'contact_information' => 'Información de Contacto',
+    ],
 
-    'selects' => [],
+    'selects' => [
+        'person' => [
+            'civil_status' => [
+                'C' => 'CASADO(A)',
+                'S' => 'SOLTERO(A)',
+                'U' => 'UNION LIBRE'
+            ],
+            'document_type' => [
+                'CC' => 'CÉDULA DE CIUDADANÍA',
+                'CE' => 'CÉDULA DE EXTRANJERÍA'
+            ],
+            'sex' => [
+                'F' => 'FEMENINO',
+                'M' => 'MASCULINO',
+            ],
+        ],
+    ],
 
 ];

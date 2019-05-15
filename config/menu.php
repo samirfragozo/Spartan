@@ -10,6 +10,10 @@ return [
                 'route' => 'home',
                 'icon' => 'fa fa-notes-medical',
             ],
+            [
+                'crud' => 'clients',
+                'icon' => 'fa fa-notes-medical',
+            ],
         ],
     ],
 

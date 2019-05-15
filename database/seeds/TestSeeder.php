@@ -1,8 +1,7 @@
 <?php
 
-use App\User;
+use App\Client;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 
 class TestSeeder extends Seeder
 {
@@ -10,13 +9,14 @@ class TestSeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
+     * @throws Exception
      */
     public function run()
     {
-        Role::create(['name' => 'admin']);
-
-        factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ])->assignRole('admin');
+        for ($i = 0; $i < 50; $i++) {
+            factory(Client::class)->create([
+                'active' => random_int(0, 1),
+            ]);
+        }
     }
 }

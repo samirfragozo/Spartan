@@ -13,6 +13,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Admin
     Route::middleware(['role:admin'])->group(function () {
-        //
+        // Clients
+        Route::resource('clients', 'ClientController', ['except' => ['create', 'destroy', 'edit']]);
+        Route::put('clients', 'ClientController@status');
     });
 });

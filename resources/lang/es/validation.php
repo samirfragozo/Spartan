@@ -143,7 +143,21 @@ return [
     */
 
     'attributes' => [
-
+        'address' => 'Dirección',
+        'birth_date' => 'Fecha de nacimiento',
+        'cellphone' => 'Celular',
+        'civil_status' => 'Estado civil',
+        'document' => 'Documento',
+        'document_type' => 'Tipo de documento',
+        'last_name' => 'Apellidos',
+        'name' => 'Nombre',
+        'neighborhood' => 'Barrio',
+        'phone' => 'Teléfono',
+        'rfid' => 'RFID',
+        'sex' => 'Sexo',
+        'translated_civil_status' => 'Estado civil',
+        'translated_document_type' => 'Tipo de documento',
+        'translated_sex' => 'Sexo',
     ],
 
 ];
