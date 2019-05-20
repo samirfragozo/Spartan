@@ -214,11 +214,6 @@ class Client extends Base
         ];
 
         Amqp::publish('Demo', json_encode($message), ['queue' => 'Demo']);
-        Amqp::publish('Server', json_encode([
-            'id' => $this->id,
-            'sucursal' => 1,
-            'date' => date("Y-m-d h:m:s"),
-        ]), ['queue' => 'Server']);
     }
 
     // Relationships

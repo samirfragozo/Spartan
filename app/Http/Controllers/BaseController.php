@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Exports\BaseExport;
 use App\User;
 use Exception;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Yajra\DataTables\DataTables;
 
@@ -38,7 +40,7 @@ class BaseController extends Controller
      * Display a listing of the resource.
      *
      * @param Request $request
-     * @return BinaryFileResponse
+     * @return Factory|View|BinaryFileResponse
      * @throws Exception
      */
     protected function index(Request $request)
