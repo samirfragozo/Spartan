@@ -137,7 +137,7 @@ class Client extends Base
      */
     public function getFingerprintAttribute()
     {
-        if(file_exists(storage_path("app/public/fingerprints/{$this->id}.bmp"))) return asset("storage/fingerprints/{$this->id}.bmp");
+        if(file_exists(storage_path("app/public/fingerprints/{$this->id}.bmp"))) return env('APP_URL') . "/storage/fingerprints/{$this->id}.bmp";
         else return null;
     }
 
