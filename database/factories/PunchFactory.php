@@ -12,5 +12,6 @@ $factory->define(Punch::class, function (Faker $faker) {
         'client_id' => function () {
             return factory(App\Client::class)->create()->id;
         },
+        'access_id' => 1,
     ];
 });

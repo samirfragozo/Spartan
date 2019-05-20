@@ -4,6 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property string date
+ * @property integer client_id
+ * @property integer access_id
+ */
 class Punch extends Base
 {
     /**

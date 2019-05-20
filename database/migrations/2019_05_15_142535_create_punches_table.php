@@ -18,6 +18,7 @@ class CreatePunchesTable extends Migration
             $table->dateTime('date');
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients');
+            $table->unsignedBigInteger('access_id');
             $table->timestamps();
         });
     }
