@@ -44,7 +44,7 @@ class ListenRabbit extends Command
         $connection = new AMQPStreamConnection('45.55.167.18', 5672, 'nox', '678Tppydk732dq4*');
         $channel = $connection->channel();
 
-        $channel->queue_declare('Server', false, true, false, false);
+        $channel->queue_declare('server_orion', false, true, false, false);
 
         echo " [*] Waiting for messages. To exit press CTRL+C\n";
 
@@ -62,7 +62,7 @@ class ListenRabbit extends Command
             echo ' [x] Received ', $msg->body, "\n";
         };
 
-        $channel->basic_consume('Server', '', false, true, false, false, $callback);
+        $channel->basic_consume('server_orion', '', false, true, false, false, $callback);
 
         while (count($channel->callbacks)) {
             $channel->wait();
