@@ -17,7 +17,8 @@
         "maatwebsite/excel": "^3.1",
         "spatie/laravel-menu": "^3.3",
         "spatie/laravel-permission": "^2.37",
-        "yajra/laravel-datatables-oracle": "^9.2"
+        "yajra/laravel-datatables-oracle": "^9.2",
+      "ext-json": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -198,24 +198,27 @@ class Client extends Base
 
     public function notifyUpdate()
     {
-        $active = $this->active ? 'true' : 'false';
         $date = date("Y-m-d");
         $date = strtotime(date("Y-m-d", strtotime($date)) . " +50 years");
         $date = date("Y-m-d", $date);
 
-        Amqp::publish('Demo',
-            '{
-                "id":"' . $this->id . '",
-                "canEnter":' . $active . ',
-                "errorMessage":"",
-                "fingerprintURL":"' . $this->fingerprint . '",
-                "fullname":"' . $this->full_name . '",
-                "endDate":"' . $date . '",
-                "idSubsidiary":1,
-                "rfid":"' . $this->rfid . '"
-            }',
-            ['queue' => 'Demo']
-        );
+        $message = [
+            'id' => $this->id,
+            'canEnter' => $this->active ? 'true' : 'false',
+            'errorMessage' => '',
+            'fingerprintURL' => $this->fingerprint,
+            'fullname' => $this->full_name,
+            'endDate' => $date,
+            'idSubsidiary' => 1,
+            'rfid' => $this->rfid,
+        ];
+
+        Amqp::publish('Demo', json_encode($message), ['queue' => 'Demo']);
+        Amqp::publish('Server', json_encode([
+            'id' => $this->id,
+            'sucursal' => 1,
+            'date' => date("Y-m-d h:m:s"),
+        ]), ['queue' => 'Server']);
     }
 
     // Relationships
