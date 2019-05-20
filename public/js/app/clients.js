@@ -34,7 +34,7 @@ function getStatus(column, value) {
         let _class = value['fingerprint'] ? 'm--font-brand' : '';
 
         actions += (
-            '<a href="orion:@' + value['id'] + '@http://127.0.0.1:8000@' + value['id'] + '" class="m-portlet__nav-link btn m-btn m-btn--icon m-btn--icon-only m-btn--pill m-btn--hover-primary" title="Huella">' +
+            '<a href="orion:@' + value['id'] + '@' + window.location.origin + '@' + value['id'] + '" class="m-portlet__nav-link btn m-btn m-btn--icon m-btn--icon-only m-btn--pill m-btn--hover-primary" title="Huella">' +
                 '<i class="fa fa-fingerprint ' + _class + '"></i>' +
             '</a>'
         );
