@@ -260,7 +260,7 @@ $(document).ready( function () {
     });
 
     //Init bootstrap switch
-    $('.switch').bootstrapSwitch();
+    setTimeout( () => $('.switch').bootstrapSwitch(), 200);
 
     if (form.length !== 0) disableForm(true);
     if (table.length === 0) ajaxRequest(routes.data.url, null, routes.data.method, show, formPortlet);

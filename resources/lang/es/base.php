@@ -7,14 +7,17 @@ return [
         'active' => 'Activo',
         'agree' => 'Acepto los términos y condiciones.',
         'email' => 'Correo Electrónico',
+        'no' => 'No',
         'password' => 'Contraseña',
         'password_confirmation' => 'Confirmar Contraseña',
         'remember' => 'Recordar Sesión',
         'search' => 'Buscar',
         'status' => 'Estado',
+        'yes' => 'Sí',
     ],
 
     'buttons' => [
+        'auto_reload' => 'Auto Recargar',
         'cancel' => 'Cancelar',
         'create' => 'Agregar',
         'export' => 'Exportar',
@@ -23,19 +26,10 @@ return [
         'logout' => 'Cerrar sesión',
         'massive' => 'Masivos',
         'reload' => 'Recargar',
+        'seconds' => 'Segundos',
         'sign_in' => 'Iniciar sesión',
         'sign_up' => 'Regístrate',
         'submit' => 'Solicitar',
-    ],
-
-    'dataTables' => [
-        'url' => 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json',
-        'paginate' => [
-            'sFirst' => '<<',
-            'sLast' => '>>',
-            'sNext' => '>',
-            'sPrevious' => '<',
-        ],
     ],
 
     'filters' => [

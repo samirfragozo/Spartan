@@ -1,5 +1,25 @@
 @if($reload)
     <li class="m-portlet__nav-item">
+        {{__('base.buttons.auto_reload')}}
+    </li>
+    <li class="m-portlet__nav-item">
+        {{Form::checkbox('auto_reload_switch', 1, false, [
+            'id' => 'auto_reload_switch',
+            'class' => 'switch',
+            'data-switch' => 'true',
+            'data-on-text' => __('base.attributes.yes'), 'data-off-text' => __('base.attributes.no'),
+        ])}}
+    </li>
+    <li class="m-portlet__nav-item" style="width: 100px">
+        {{Form::number('auto_reload_input', 5, [
+            'id' => 'auto_reload_input',
+            'class' => 'form-control m-input',
+        ])}}
+    </li>
+    <li class="m-portlet__nav-item">
+        {{__('base.buttons.seconds')}}
+    </li>
+    <li class="m-portlet__nav-item">
         <a onclick="createRow()"
            data-toggle="m-tooltip" data-original-title="{{__('base.buttons.reload')}}"
            class="m-portlet__nav-link btn btn-lg btn-secondary m-btn m-btn--outline-2x m-btn--air m-btn--icon m-btn--icon-only m-btn--pill">

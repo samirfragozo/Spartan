@@ -42,6 +42,9 @@
 
 @push('scripts')
     @include('includes.scripts')
+    @if ($tools['reload'])
+        <script type="text/javascript" src="{{ asset('js/base/reload.js') }}" defer></script>
+    @endif
     @if (file_exists('js/app/' . $crud . '.js'))
         <script type="text/javascript" src="{{ asset('js/app/' . $crud . '.js') }}" defer></script>
     @endif

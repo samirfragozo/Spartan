@@ -131,7 +131,7 @@
                         'class' => 'switch',
                         'data-switch' => 'true',
                         'data-size' => 'small',
-                        'data-on-text' => 'Sí', 'data-off-text' => 'No',
+                        'data-on-text' => __('base.attributes.yes'), 'data-off-text' => __('base.attributes.no'),
                     ])}}
                 </div>
             @elseif($field['type'] == 'text')
