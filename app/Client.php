@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Bschmitt\Amqp\Facades\Amqp;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Storage;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * @property integer id
@@ -131,7 +131,7 @@ class Client extends Base
         return [
             'id' => $this->id,
             'active' => $this->active,
-            'fingerprint' => Storage::exists("public/fingerprints/{$this->id}.bmp"),
+            'fingerprint' => file_exists(storage_path("app/public/fingerprints/{$this->id}.bmp")),
         ];
     }
 
@@ -196,14 +196,19 @@ class Client extends Base
     {
         parent::boot();
 
-        self::updated(function($model) {
+        self::updated(function(Client $model) {
             $model->notifyUpdate();
         });
     }
 
     public function notifyUpdate()
     {
-        Amqp::publish('Demo', json_encode([
+        $connection = new AMQPStreamConnection('45.55.167.18', 5672, 'nox', '678Tppydk732dq4*');
+        $channel = $connection->channel();
+
+        $channel->queue_declare('Demo', false, true, false, false);
+
+        $msg = new AMQPMessage(json_encode([
             'id' => $this->id,
             'canEnter' => $this->active ? 'true' : 'false',
             'errorMessage' => '',
@@ -212,7 +217,11 @@ class Client extends Base
             'endDate' => $this->end,
             'idSubsidiary' => 1,
             'rfid' => $this->rfid,
-        ]), ['queue' => 'Demo']);
+        ]));
+        $channel->basic_publish($msg, '', 'Demo');
+
+        $channel->close();
+        $connection->close();
     }
 
     // Relationships
