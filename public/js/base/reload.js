@@ -14,6 +14,13 @@ function createInterval () {
     }
 }
 
-auto_reload_input.change(createInterval);
+auto_reload_input.change(function () {
+    let value = auto_reload_input.val();
+
+    if (value > 60) auto_reload_input.val(60);
+    else if (value < 3) auto_reload_input.val(3);
+
+    createInterval();
+});
 
 auto_reload_switch.on('switchChange.bootstrapSwitch', createInterval);

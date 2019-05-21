@@ -13,6 +13,8 @@
     <li class="m-portlet__nav-item" style="width: 100px">
         {{Form::number('auto_reload_input', 5, [
             'id' => 'auto_reload_input',
+            'min' => 3,
+            'max' => 60,
             'class' => 'form-control m-input',
         ])}}
     </li>
