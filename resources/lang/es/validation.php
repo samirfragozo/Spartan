@@ -151,6 +151,7 @@ return [
         'date' => 'Fecha',
         'document' => 'Documento',
         'document_type' => 'Tipo de documento',
+        'end' => 'Acceso hasta',
         'last_name' => 'Apellidos',
         'name' => 'Nombre',
         'neighborhood' => 'Barrio',

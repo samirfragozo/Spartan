@@ -27,6 +27,7 @@ class ClientRequest extends BaseRequest
             'phone' => 'required_without:cellphone|nullable|numeric|digits_between:6,12|bail',
             'cellphone' => 'nullable|numeric|digits_between:6,12|bail',
             'rfid' => 'nullable|numeric|digits_between:4,12|bail',
+            'end' => 'required|date|after_or_equal:Today',
         ];
     }
 }

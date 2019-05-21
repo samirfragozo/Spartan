@@ -27,6 +27,7 @@ class CreateClientsTable extends Migration
             $table->string('phone', 15)->nullable();
             $table->string('cellphone', 15)->nullable();
             $table->string('rfid', 12)->nullable();
+            $table->date('end');
             $table->boolean('active')->default(1);
             $table->timestamps();
         });

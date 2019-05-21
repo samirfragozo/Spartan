@@ -22,5 +22,6 @@ $factory->define(Client::class, function (Faker $faker) {
         'phone' => '5' . random_int (7, 9) . $faker->unique()->randomNumber($nbDigits = 5),
         'cellphone' => '3' . random_int (0, 2) . random_int (0, 9) . $faker->unique()->randomNumber($nbDigits = 7),
         'rfid' => null,
+        'end' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+1 year'),
     ];
 });

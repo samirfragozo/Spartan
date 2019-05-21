@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Storage;
  * @property string civil_status
  * @property string document_type
  * @property string sex
- * @property mixed rfid
- * @property mixed active
+ * @property string rfid
+ * @property string end
+ * @property boolean active
  * @property string fingerprint
  * @property string full_name
  */
@@ -51,7 +52,7 @@ class Client extends Base
         ],
         'table' => [
             'check' => false,
-            'fields' => ['document', 'name', 'last_name',],
+            'fields' => ['document', 'name', 'last_name', 'end',],
             'active' => true,
             'actions' => true,
         ],
@@ -110,6 +111,10 @@ class Client extends Base
             [
                 'name' => 'rfid',
                 'type' => 'text'
+            ],
+            [
+                'name' => 'end',
+                'type' => 'date'
             ],
         ],
     ];
@@ -198,22 +203,16 @@ class Client extends Base
 
     public function notifyUpdate()
     {
-        $date = date("Y-m-d");
-        $date = strtotime(date("Y-m-d", strtotime($date)) . " +50 years");
-        $date = date("Y-m-d", $date);
-
-        $message = [
+        Amqp::publish('Demo', json_encode([
             'id' => $this->id,
             'canEnter' => $this->active ? 'true' : 'false',
             'errorMessage' => '',
             'fingerprintURL' => $this->fingerprint,
             'fullname' => $this->full_name,
-            'endDate' => $date,
+            'endDate' => $this->end,
             'idSubsidiary' => 1,
             'rfid' => $this->rfid,
-        ];
-
-        Amqp::publish('Demo', json_encode($message), ['queue' => 'Demo']);
+        ]), ['queue' => 'Demo']);
     }
 
     // Relationships
