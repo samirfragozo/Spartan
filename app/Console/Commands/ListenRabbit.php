@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Punch;
 use ErrorException;
+use Exception;
 use Illuminate\Console\Command;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
@@ -49,17 +50,22 @@ class ListenRabbit extends Command
         echo " [*] Waiting for messages. To exit press CTRL+C\n";
 
         $callback = function ($msg) {
-            $request = json_decode($msg->body);
+            try{
+                $request = json_decode($msg->body);
 
-            $punch = new Punch;
+                $punch = new Punch;
 
-            $punch->date = $request->date;
-            $punch->client_id = $request->id;
-            $punch->access_id = $request->sucursal;
+                $punch->date = $request->date;
+                $punch->client_id = $request->id;
+                $punch->access_id = $request->sucursal;
 
-            $punch->save();
+                $punch->save();
 
-            echo ' [x] Received ', $msg->body, "\n";
+                echo " [-] Received: {$msg->body}\n";
+            }
+            catch(Exception $e){
+                echo " [x] Error: {$e->getMessage()}\n";
+            }
         };
 
         $channel->basic_consume('server_orion', '', false, true, false, false, $callback);
