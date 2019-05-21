@@ -15,7 +15,7 @@ function create() {
 function createRow(results) {
     if (results === undefined) results = {};
 
-    if (table.length !== 0) dataTable.ajax.reload();
+    if (table.length !== 0) dataTable.ajax.reload(null, false);
 
     if (form.length !== 0) {
         if (results.data) showEntity(results.data);
