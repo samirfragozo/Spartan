@@ -42,10 +42,10 @@ class ListenRabbit extends Command
      */
     public function handle()
     {
-        $connection = new AMQPStreamConnection('45.55.167.18', 5672, 'nox', '678Tppydk732dq4*');
+        $connection = new AMQPStreamConnection(env('RABBIT_HOST', 'localhost'), env('RABBIT_PORT', 5672), env('RABBIT_USERNAME', ''), env('RABBIT_PASSWORD', ''));
         $channel = $connection->channel();
 
-        $channel->queue_declare('server_orion', false, true, false, false);
+        $channel->queue_declare(env('RABBIT_QUEUE_SERVER', 'server'), false, true, false, false);
 
         echo " [*] Waiting for messages. To exit press CTRL+C\n";
 
@@ -68,7 +68,7 @@ class ListenRabbit extends Command
             }
         };
 
-        $channel->basic_consume('server_orion', '', false, true, false, false, $callback);
+        $channel->basic_consume(env('RABBIT_QUEUE_SERVER', 'server'), '', false, true, false, false, $callback);
 
         while (count($channel->callbacks)) {
             $channel->wait();

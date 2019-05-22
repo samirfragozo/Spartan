@@ -203,10 +203,10 @@ class Client extends Base
 
     public function notifyUpdate()
     {
-        $connection = new AMQPStreamConnection('45.55.167.18', 5672, 'nox', '678Tppydk732dq4*');
+        $connection = new AMQPStreamConnection(env('RABBIT_HOST', 'localhost'), env('RABBIT_PORT', 5672), env('RABBIT_USERNAME', ''), env('RABBIT_PASSWORD', ''));
         $channel = $connection->channel();
 
-        $channel->queue_declare('Demo', false, true, false, false);
+        $channel->queue_declare(env('RABBIT_QUEUE_TERMINAL', 'demo'), false, true, false, false);
 
         $msg = new AMQPMessage(json_encode([
             'id' => $this->id,
@@ -218,7 +218,7 @@ class Client extends Base
             'idSubsidiary' => 1,
             'rfid' => $this->rfid,
         ]));
-        $channel->basic_publish($msg, '', 'Demo');
+        $channel->basic_publish($msg, '', env('RABBIT_QUEUE_TERMINAL', 'demo'));
 
         $channel->close();
         $connection->close();
