@@ -27,7 +27,7 @@ class Client extends Base
      * @var array
      */
     protected $appends = [
-        'actions', 'fingerprint', 'full_name', 'translated_civil_status', 'translated_document_type', 'translated_sex', 'select_value',
+        'actions', 'fingerprint', 'full_name', 'select_value',
     ];
 
     /**
@@ -36,7 +36,7 @@ class Client extends Base
      * @var array
      */
     protected $exported = [
-        'translated_document_type', 'document', 'name', 'last_name', 'translated_sex', 'translated_civil_status', 'birth_date', 'address', 'neighborhood', 'phone', 'cellphone',
+        'name', 'end', 'rfid',
     ];
 
     /**
@@ -52,61 +52,16 @@ class Client extends Base
         ],
         'table' => [
             'check' => false,
-            'fields' => ['document', 'name', 'last_name', 'end',],
+            'fields' => [
+                'name', 'end', 'rfid',
+            ],
             'active' => true,
             'actions' => true,
         ],
         'form' => [
             [
-                'name' => 'document_type',
-                'type' => 'select',
-                'value' => 'app.selects.person.document_type',
-            ],
-            [
-                'name' => 'document',
-                'type' => 'text',
-            ],
-            [
                 'name' => 'name',
                 'type' => 'text',
-            ],
-            [
-                'name' => 'last_name',
-                'type' => 'text',
-            ],
-            [
-                'name' => 'sex',
-                'type' => 'select',
-                'value' => 'app.selects.person.sex',
-            ],
-            [
-                'name' => 'civil_status',
-                'type' => 'select',
-                'value' => 'app.selects.person.civil_status',
-            ],
-            [
-                'name' => 'birth_date',
-                'type' => 'date',
-            ],
-            [
-                'type' => 'section',
-                'value' => 'app.sections.contact_information',
-            ],
-            [
-                'name' => 'address',
-                'type' => 'text'
-            ],
-            [
-                'name' => 'neighborhood',
-                'type' => 'text'
-            ],
-            [
-                'name' => 'phone',
-                'type' => 'text'
-            ],
-            [
-                'name' => 'cellphone',
-                'type' => 'text'
             ],
             [
                 'name' => 'rfid',
@@ -144,46 +99,6 @@ class Client extends Base
     {
         if(file_exists(storage_path("app/public/fingerprints/{$this->id}.bmp"))) return env('APP_URL') . "/storage/fingerprints/{$this->id}.bmp";
         else return null;
-    }
-
-    /**
-     * Mutator for the full name
-     *
-     * @return string
-     */
-    public function getFullNameAttribute()
-    {
-        return "{$this->name} {$this->last_name}";
-    }
-
-    /**
-     * Mutator for the translated civil status
-     *
-     * @return string
-     */
-    public function getTranslatedCivilStatusAttribute()
-    {
-        return __('app.selects.person.civil_status.' . $this->civil_status);
-    }
-
-    /**
-     * Mutator for the translated document type
-     *
-     * @return string
-     */
-    public function getTranslatedDocumentTypeAttribute()
-    {
-        return __('app.selects.person.document_type.' . $this->document_type);
-    }
-
-    /**
-     * Mutator for the translated sex
-     *
-     * @return string
-     */
-    public function getTranslatedSexAttribute()
-    {
-        return __('app.selects.person.sex.' . $this->sex);
     }
 
     // Methods
