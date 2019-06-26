@@ -14,7 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UsersTableSeeder::class,
-            TestSeeder::class
         ]);
+
+        if (App::environment() === 'local') {
+            $this->call(TestSeeder::class);
+        }
+
     }
 }
