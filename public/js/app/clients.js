@@ -1,8 +1,7 @@
 columnsDataTable = [
-    {data: 'document'},
     {data: 'name'},
-    {data: 'last_name'},
     {data: 'end'},
+    {data: 'rfid'},
     {data: 'active', searchable: false, className: 'dt-center', customValue: true},
     {data: 'actions', searchable: false, className: 'dt-center', customValue: true},
 ];
@@ -16,9 +15,9 @@ columnsDataTable = [
  * @returns {String} The HTML string with the status
  */
 function getStatus(column, value) {
-    if (column === 4) {
+    if (column === 3) {
         return (value ? '<span class="m-badge m-badge--success">' : '<span class="m-badge m-badge--danger">') + Lang.get('base/base.enabled.' + value) + '</span>'
-    } else if (column === 5) {
+    } else if (column === 4) {
         let actions = '';
 
         if (value['active']) actions =  (
